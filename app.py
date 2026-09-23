@@ -39,7 +39,7 @@ def create_dobble_pdf_bytes(uploaded_files, n=5):
     # DIN A4 Einstellungen bei 300 DPI
     a4_width = 2480
     a4_height = 3508
-    card_size = 1100 
+    card_size = 1200 
     radius = card_size // 2
 
     margin_x = (a4_width - (2 * card_size)) // 3
@@ -75,7 +75,7 @@ def create_dobble_pdf_bytes(uploaded_files, n=5):
         for pos, img_index in enumerate(combination):
             icon = images[img_index].copy()
             
-            scale_factor = random.uniform(0.6, 1.0)
+            scale_factor = random.uniform(0.8, 1.2)
             max_icon_size = int(radius * 0.65)
             new_size = int(max_icon_size * scale_factor)
             
@@ -119,8 +119,8 @@ def create_dobble_pdf_bytes(uploaded_files, n=5):
 # === STREAMLIT OBERFLÄCHE ===
 st.set_page_config(page_title="Horcas Dobble Generator", page_icon="")
 
-st.title("Dobble-Spiel Generator")
-st.write("Lade hier deine 31 Bilder hoch. Das Programm generiert daraus mit ziemlich spannender Mathematik eine PDF-Datei.")
+st.title("Stina's Dobble Generator")
+st.write("Lade hier genau 31 Bilder hoch. Das Programm generiert daraus mit ziemlich spannender Mathematik eine PDF-Datei.")
 
 # Datei-Upload Widget
 uploaded_files = st.file_uploader(
@@ -137,7 +137,7 @@ if uploaded_files:
         st.success("Alle benoetigten Bilder sind da!")
         
         # Button zum Starten der Generierung
-        if st.button("Druck-PDF generieren"):
+        if st.button("PDF generieren"):
             with st.spinner("Berechne Kombinationen und layoute Karten..."):
                 # Funktion aufrufen, die uns die reinen PDF-Daten zurückgibt
                 pdf_bytes = create_dobble_pdf_bytes(uploaded_files, n=5)
