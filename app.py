@@ -75,7 +75,7 @@ def create_dobble_pdf_bytes(uploaded_files, n=5):
         for pos, img_index in enumerate(combination):
             icon = images[img_index].copy()
             
-            scale_factor = random.uniform(0.8, 1.2)
+            scale_factor = random.uniform(0.8, 1.1)
             max_icon_size = int(radius * 0.65)
             new_size = int(max_icon_size * scale_factor)
             
